@@ -2,11 +2,22 @@ const micro = require('micro');
 const replies = require('./replies');
 
 const server = micro(async (req, res) => {
+<<<<<<< HEAD
+=======
+  if (req.method !== 'POST') {
+    return 'Server is running';
+  }
+
+>>>>>>> a40c992f30f3c4fed948517317d14dde7b6e4378
   const { request, session, state } = await micro.json(req);
   const sessionState = state && state.session || {};
   const response = session.new
     ? replies.welcome()
     : checkAnswer(sessionState, request.command);
+<<<<<<< HEAD
+=======
+
+>>>>>>> a40c992f30f3c4fed948517317d14dde7b6e4378
   return {
     response,
     session_state: sessionState,
